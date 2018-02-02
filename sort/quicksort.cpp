@@ -53,7 +53,31 @@ void quicksort(vector<T> & a)
 	int n=a.size();
 	sort(a,0,n-1);
 }
-
+//三向切分的快排
+void sort3way(vector<T> &a,int lo,int hi)
+{
+	if(hi<=lo)
+		return ;
+	int lt=lo;
+	int i=lo+1;
+	int gt=hi;
+	while(i<=gt)
+	{
+		if(a[i]<v)
+			exch(a,lt++,i++);
+		else if(a[i]>v)
+			exch(a,i,gt--);
+		else
+			i++;
+	}//现在a[lo..lt-1]<v =a[lt..gt]<a[gt+1..hi]
+	sort3way(a,lo,lt-1);
+	sort3way(a,gt+1,hi);
+}
+void quick3way(vector<T> & a)
+{
+	int n=a.size();
+	sort3way(a,0,n-1);
+}
 int main()
 {
 	srand(time(0));
