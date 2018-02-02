@@ -17,7 +17,12 @@ bool Less(T m,T n)
 	else
 		return false;
 }
-
+void  insert(vector<T> & a,int lo,int hi)
+{
+	for(int k=lo+1;k<=hi;k++)
+		for(int j=k;j>lo && a[j]<a[j-1];j--)
+			exch(a,j,j-1);
+}
 extern vector<T> aux;
 void merge(vector<T> & a,int lo,int mid,int hi)
 {
