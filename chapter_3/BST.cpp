@@ -22,23 +22,23 @@ private:
 		else return x.N;
 	}
 	T search(Node * x,T key);
-	//T iterativesearch(Node * x,T key);
+	
 	void insert(Node * & x,T key);
-	//Node * min(Node * x);
+	
 	Node * min(Node * x)
 	{
 	if(x->left==NULL)
 		return x;
 	return x->left;
 	}
-	//Node * max(Node * x);
+	
 	Node * max(Node * x)
 	{
 	if(x->right==NULL)
 		return x;
 	return x->right;
 	}
-	//Node * floor(Node * x,T key);
+	
 	Node * floor(Node * x,T key)
 	{
 	if(x==NULL) return NULL;
@@ -48,7 +48,7 @@ private:
 	if(t!=NULL) return t;
 	else return x;
 	}
-	//Node * select(Node * x,int k);
+	
 	Node * select(Node * x,int k)
 	{
 	if(x==NULL)
@@ -93,7 +93,7 @@ public:
 	//µ›πÈ≤È’“
 	T search(T key);
 	//∑«µ›πÈ≤È’“
-	//T iterativesearch(T key);
+	T iterativesearch(T key);
 
 	void insert(T key);
 	const T  & min() const
@@ -139,6 +139,18 @@ T BSTree<T>::search(Node * x,T key)
 	if(key<x->key) return search(x->left,key);
 	else if(key > x->key ) return search(x->right,key);
 	else return x->key;
+}
+template <typename T>
+T BSTree<T>::iterativesearch(T key)
+{
+	Node x = root;
+	while( x != NULL)
+	{
+		if(key == x->key ) return x->key;
+		else if(key < x->key ) x= x->left;
+		else x = x->right;
+	}
+	return NULL;
 }
 template <typename T>
 void BSTree<T>::insert(T key)
